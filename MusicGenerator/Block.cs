@@ -20,32 +20,7 @@ namespace MusicGenerator
             _countOfChildren = countOfChildren;
         }
 
-        public override void Play(Track track, ChannelMessageBuilder channelBuilder)
-        {
-            foreach (var childBlock in ChildBlocks)
-            {
-                childBlock.Play(track,channelBuilder);
-            }
-        }
-
-        public override void SetGlobalBlockStartIndex(int highestBlockStartIndex)
-        {
-            GlobalBlockStartIndex = BlockStartIndex + highestBlockStartIndex;
-            foreach (var childBlock in ChildBlocks)
-            {
-                childBlock.SetGlobalBlockStartIndex(GlobalBlockStartIndex);
-            }
-        }
-
-        public override void SetGlobalBlockEndIndex(int highestBlockEndIndex)
-        {
-            GlobalBlockEndIndex = BlockEndIndex + highestBlockEndIndex;
-            foreach (var childBlock in ChildBlocks)
-            {
-                childBlock.SetGlobalBlockEndIndex(GlobalBlockEndIndex);
-            }
-        }
-
+ 
         public override  BlockBase Generate()
         {
             return new Block(SettingsGenerator,_prototypeOfChildren, _countOfChildren);
@@ -77,16 +52,6 @@ namespace MusicGenerator
             
         }
 
-        public override int Getlength()
-        {
-            foreach (var childBlock in ChildBlocks)
-            {
-                Length += childBlock.Getlength();
-            }
-
-            return Length;
-        }
-
         public override BlockBase Clone()
         {
             return new Block(SettingsGenerator,_prototypeOfChildren,_countOfChildren)
@@ -96,22 +61,9 @@ namespace MusicGenerator
             };
         }
 
-        public void DefineStartAndEndIndex()
+        public override List<BlockBase> GetNotes()
         {
-            int index=0;
-            for (int i = 0; i < ChildBlocks.Count; i++ )
-            {
-                ChildBlocks[i].BlockStartIndex = index;
-                index += ChildBlocks[i].Length;
-                ChildBlocks[i].BlockEndIndex = index;
-                index++;
-
-                if(ChildBlocks[i] is Block)
-                    ((Block)ChildBlocks[i]).DefineStartAndEndIndex();
-
-              
-            }
-
+           return ChildBlocks.SelectMany(n=>n.GetNotes()).ToList();
         }
     }
 }

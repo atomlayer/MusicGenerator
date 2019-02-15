@@ -14,18 +14,7 @@ namespace MusicGenerator
         {
             this.SettingsGenerator = settingsGenerator;
         }
-        public abstract void Play(Track track, ChannelMessageBuilder channelBuilder);
-
-        public int BlockStartIndex;
-        public int BlockEndIndex;
-
-        public int GlobalBlockStartIndex;
-        public int GlobalBlockEndIndex;
-
-        public abstract void SetGlobalBlockStartIndex(int highestBlockStartIndex);
-
-        public abstract void SetGlobalBlockEndIndex(int highestBlockEndIndex);
-
+ 
         public abstract BlockBase Generate();
 
         public abstract void GenerateBlocks();
@@ -34,9 +23,9 @@ namespace MusicGenerator
 
         public SettingsGeneratorBase SettingsGenerator;
 
-        public abstract int Getlength();
-
 
         public abstract BlockBase Clone();
+
+        public abstract List<BlockBase> GetNotes();
     }
 }

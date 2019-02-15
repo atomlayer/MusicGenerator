@@ -10,33 +10,7 @@ namespace MusicGenerator
 {
     class Note:BlockBase
     {
-        public override void Play(Track track, ChannelMessageBuilder channelBuilder)
-        {
-            channelBuilder.Command = ChannelCommand.NoteOn;
-            channelBuilder.Data1 = NoteName; 
-            channelBuilder.Data2 = VelocityStart; 
-            channelBuilder.Build();
-            track.Insert(GlobalBlockStartIndex, channelBuilder.Result);
-
-            channelBuilder.Command = ChannelCommand.NoteOff;
-            channelBuilder.Data1 = NoteName; 
-            channelBuilder.Data2 = VelocityEnd; 
-            channelBuilder.Build();
-            track.Insert(GlobalBlockEndIndex, channelBuilder.Result);
-            Trace.WriteLine($"start {GlobalBlockStartIndex} end {GlobalBlockEndIndex} ");
-        }
-
-        
-
-        public override void SetGlobalBlockStartIndex(int highestBlockStartIndex)
-        {
-            GlobalBlockStartIndex = BlockStartIndex+highestBlockStartIndex;
-        }
-
-        public override void SetGlobalBlockEndIndex(int highestBlockEndIndex)
-        {
-            GlobalBlockEndIndex =BlockEndIndex+highestBlockEndIndex;
-        }
+     
 
         public override BlockBase Generate()
         {
@@ -53,14 +27,15 @@ namespace MusicGenerator
             
         }
 
-        public override int Getlength()
-        {
-            return Length;
-        }
 
         public override BlockBase Clone()
         {
             return new Note(SettingsGenerator){Length = Length,NoteName = NoteName,VelocityStart = VelocityStart,VelocityEnd = VelocityEnd};
+        }
+
+        public override List<BlockBase> GetNotes()
+        {
+            return new List<BlockBase>(){this};
         }
 
 

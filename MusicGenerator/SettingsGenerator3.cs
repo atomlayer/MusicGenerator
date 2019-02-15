@@ -21,7 +21,7 @@ namespace MusicGenerator
 
         public override int GetLenght()
         {
-            return random.Next(1, 10);
+            return random.Next(5, 30);
         }
 
         public override int GetNumberOfBlockForDuplicate()

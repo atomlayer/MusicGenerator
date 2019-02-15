@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,8 +8,26 @@ using Sanford.Multimedia.Midi;
 
 namespace MusicGenerator
 {
+
     class Player
     {
+
+        public void PlayNote(Note note, int startIndex, int endIndex)
+        {
+            channelBuilder.Command = ChannelCommand.NoteOn;
+            channelBuilder.Data1 = note.NoteName;
+            channelBuilder.Data2 = note.VelocityStart;
+            channelBuilder.Build();
+            track.Insert(startIndex, channelBuilder.Result);
+
+            channelBuilder.Command = ChannelCommand.NoteOff;
+            channelBuilder.Data1 = note.NoteName;
+            channelBuilder.Data2 = note.VelocityEnd;
+            channelBuilder.Build();
+            track.Insert(endIndex, channelBuilder.Result);
+
+        }
+
         private ChannelMessageBuilder channelBuilder;
         private TempoChangeBuilder tempoBuilder;
         private Sequencer s;
@@ -36,11 +55,16 @@ namespace MusicGenerator
             track.Insert(0, channelBuilder.Result);
 
             block.GenerateBlocks();
-            block.Getlength();
-            block.DefineStartAndEndIndex();
-            block.SetGlobalBlockStartIndex(0);
-            block.SetGlobalBlockEndIndex(0);
-            block.Play(track,channelBuilder);
+
+            List<Note> notes = block.GetNotes().Cast<Note>().ToList();
+
+            int index = 0;
+            foreach (var note in notes)
+            {
+                int endIndex = index + note.Length;
+                PlayNote(note,index,endIndex);
+                index = ++endIndex;
+            }
 
             s.Sequence.Add(track);
             //s.Sequence.Add(track1);
