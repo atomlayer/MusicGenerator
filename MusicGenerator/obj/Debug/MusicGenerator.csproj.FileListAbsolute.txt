@@ -1,0 +1,11 @@
+F:\C_2017\MusicGenerator\MusicGenerator\bin\Debug\MusicGenerator.exe.config
+F:\C_2017\MusicGenerator\MusicGenerator\bin\Debug\MusicGenerator.exe
+F:\C_2017\MusicGenerator\MusicGenerator\bin\Debug\MusicGenerator.pdb
+F:\C_2017\MusicGenerator\MusicGenerator\bin\Debug\Sanford.Multimedia.Midi.dll
+F:\C_2017\MusicGenerator\MusicGenerator\bin\Debug\Sanford.Multimedia.Midi.pdb
+F:\C_2017\MusicGenerator\MusicGenerator\bin\Debug\Sanford.Multimedia.Midi.xml
+F:\C_2017\MusicGenerator\MusicGenerator\obj\Debug\MusicGenerator.csprojResolveAssemblyReference.cache
+F:\C_2017\MusicGenerator\MusicGenerator\obj\Debug\MusicGenerator.csproj.CoreCompileInputs.cache
+F:\C_2017\MusicGenerator\MusicGenerator\obj\Debug\MusicGenerator.csproj.CopyComplete
+F:\C_2017\MusicGenerator\MusicGenerator\obj\Debug\MusicGenerator.exe
+F:\C_2017\MusicGenerator\MusicGenerator\obj\Debug\MusicGenerator.pdb
