@@ -84,32 +84,7 @@ namespace MusicGenerator
             s = new Sequencer();
             s.Sequence = new Sequence();
 
-
-            track = new Track();
-
-            tempoBuilder.Tempo = settingsGenerator.GetTempo();
-            tempoBuilder.Build();
-            track.Insert(0, tempoBuilder.Result);
-
-            channelBuilder.MidiChannel = 1;
-
-            channelBuilder.Command = ChannelCommand.ProgramChange;
-            channelBuilder.Data1 = settingsGenerator.GetGeneralMidiInstrument();
-            channelBuilder.Data2 = 0;
-            channelBuilder.Build();
-            track.Insert(0, channelBuilder.Result);
-
-            block.GenerateBlocks();
-
-            List<Note> notes = block.GetNotes().Cast<Note>().ToList();
-
-            int index = 0;
-            foreach (var note in notes)
-            {
-                int endIndex = index + note.Length;
-                PlayNote(note, index, endIndex);
-                index = ++endIndex;
-            }
+            Play2(block,settingsGenerator);
 
             s.Sequence.Add(track);
 

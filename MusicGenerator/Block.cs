@@ -14,6 +14,7 @@ namespace MusicGenerator
 
         public List<BlockBase> ChildBlocks=new List<BlockBase>();
 
+
         public Block(SettingsGeneratorBase settingsGenerator, BlockBase prototypeOfChildren, int countOfChildren) : base(settingsGenerator)
         {
             _prototypeOfChildren = prototypeOfChildren;
