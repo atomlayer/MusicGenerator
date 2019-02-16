@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MusicGenerator
+﻿namespace MusicGenerator
 {
     class Program
     {
@@ -15,7 +9,7 @@ namespace MusicGenerator
             //Definition of structure 
             SettingsGeneratorBase sg =new SettingsGenerator4();
             Block blockLevel1 = new Block(sg, new Note(sg), 4);
-            Block blockLevel2 = new Block(sg,blockLevel1, 4);
+            Block blockLevel2 = new Block(sg,blockLevel1, 40);
             Block blockLevel3 = new Block(sg, blockLevel2, 5);
             Block blockLevel4 = new Block(sg, blockLevel3, 4);
 
