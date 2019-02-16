@@ -51,6 +51,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsGenerator4.cs" />
     <Compile Include="SettingsGenerator3.cs" />
     <Compile Include="SettingsGenerator2.cs" />
     <Compile Include="SettingsGenerator.cs" />

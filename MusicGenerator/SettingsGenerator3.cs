@@ -21,7 +21,7 @@ namespace MusicGenerator
 
         public override int GetLenght()
         {
-            return random.Next(5, 30);
+            return random.Next(5, 50);
         }
 
         public override int GetNumberOfBlockForDuplicate()
@@ -31,7 +31,7 @@ namespace MusicGenerator
 
         public override int GetNoteName()
         {
-            return random.Next(40, 90);
+            return random.Next(50, 80);
         }
 
         public override int GetGeneralMidiInstrument()
